@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/master.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+      
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <div class="ax">
+                <img src="assets/img/chip.png" alt="">
+                <img src="assets/img/visa.png" alt="">
+            </div>
+            <h2 id="demo"></h2>
+            <div class="row">
+                <section>
+                    <h5>card holder</h5>
+                    <h4 id="name"></h4>
+                </section>
+                <section>
+                    <h5>cvv2</h5>
+                    <p id="cvv"></p>
+                </section>
+            </div>
+        </div>
+        <div class="box">
+            <section class="number row">
+                <label for="">card number</label>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </section>
+            <section class="txt ">
+                <div class="row c2">
+                    <label for="">cvv2</label>
+                    <input type="text" id="cvv2">
+                </div>
+                <div class="row">
+                    <label for="">exp</label>
+                    <select name="year">
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="year" selected disabled>year</option>
+                    </select>
+                    <select name="month">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="month" selected disabled>month</option>
+                    </select>
+                </div>
+            </section>
+            <section class="holder row">
+                <label for="">card holder</label>
+                <input type="text" name="" id="nam">
+            </section>
+            <button>submit</button>
+        </div>
+    </main>
+</body>
+<script>
+    const inp = document.querySelectorAll('.number>input')
+    const cv = document.querySelector('#cvv2')
+    const cvv = document.querySelector('#cvv')
+    const demo = document.querySelector('#demo')
+    const name = document.querySelector('#name')
+    const nam = document.querySelector('.holder>#nam')
+    
+
+    inp.forEach((val, i) => {
+        val.addEventListener('keyup', (e) => {
+
+            if (e.keyCode != 8) {
+                if (i != 3) {
+                    if ((val.value).length >= 4) {
+                        val.value = (val.value).slice(0, 4)
+                        val.nextElementSibling.focus()
+                    }
+                } else {
+                    if ((val.value).length >= 4) {
+                        val.value = (val.value).slice(0, 4)
+                        cv.focus()
+                    }
+                }
+            } else {
+                if(val.value.length == 0 && i != 0) {
+                    val.previousElementSibling.focus()
+                }
+            }
+
+
+
+            ///////demo//
+            demo.innerHTML = ''
+            inp.forEach((val, i) => {
+                if (val.value != '') {
+                    if (val.value.length != 4) {
+                        demo.innerHTML += val.value
+                    } else {
+                        if (i != 3) {
+                            demo.innerHTML += val.value + " - "
+
+                        } else {
+                            demo.innerHTML += val.value
+                        }
+                    }
+                }
+            })
+        })
+    })
+    nam.addEventListener('input', () => {
+
+        name.innerHTML = ''
+        name.innerHTML += nam.value
+        nam.value = (nam.value).slice(0, 20)
+
+
+    })
+    cv.addEventListener('input', () => {
+        cv.value = (cv.value).slice(0, 4)
+        cvv.innerHTML = ''
+        cvv.innerHTML += cv.value
+
+
+    })
+</script>
+
+</html>
