@@ -1,5 +1,6 @@
 # card-bank
-![13](https://github.com/user-attachments/assets/6d821a85-74a4-43a6-be5d-6a8a229d0ccd)
+![13](https://github.com/user-attachments/assets/7e0b8628-d205-4cab-8e1b-6d503a593fc2)
+
 
 
 -🔗 [Demo Project](https://helia-rz79.github.io/card-bank/)
